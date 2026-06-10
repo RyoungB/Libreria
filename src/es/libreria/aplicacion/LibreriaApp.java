@@ -1,38 +1,38 @@
 package es.libreria.aplicacion;
 
 import javax.swing.SwingUtilities;
-
-import es.libreria.controlador.LibrosControlador;
-import es.libreria.modelo.LibroDAO;
-import es.libreria.vista.LibroVista;
+import javax.swing.UIManager;
+import com.formdev.flatlaf.FlatLightLaf;
+import es.libreria.controlador.MenuPrincipalControlador;
+import es.libreria.vista.MenuPrincipalVista;
 
 public class LibreriaApp {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		
-		
-		SwingUtilities.invokeLater(() ->{
-		     try {
-	               
-	                LibroVista vista = new LibroVista();
+	 public static void main(String[] args) {
+	        try {
+	            UIManager.setLookAndFeel(new FlatLightLaf());
+	        } catch (Exception ex) {
+	            System.err.println("No se pudo aplicar el tema visual: " + ex.getMessage());
+	        }
+
+	        SwingUtilities.invokeLater(() -> {
+	            try {
+	                // El Main ahora solo inicializa y arranca el ecosistema global desde el Menú
+	                MenuPrincipalVista vistaMenu = new MenuPrincipalVista();
+	                MenuPrincipalControlador controladorMenu = new MenuPrincipalControlador(vistaMenu);
 	                
-	                // 2. Instanciamos el DAO (la capa que habla con Workbench)
-	                LibroDAO dao = new LibroDAO();
-	                
-	                // 3. Instanciamos el Controlador inyectando los componentes anteriores
-	                LibrosControlador controlador = new LibrosControlador(vista, dao);
-	                
-	                // 4. Arrancamos el programa (carga la tabla y muestra la ventana)
-	                controlador.iniciar();
+	                controladorMenu.iniciar();
 	                
 	            } catch (Exception e) {
-	                System.err.println("Error crítico al iniciar la aplicación gráfica: " + e.getMessage());
+	                System.err.println("Error al iniciar el menú principal: " + e.getMessage());
 	                e.printStackTrace();
 	            }
-		});
+	        });
+	    }
+		
 		
 	
 	}
-}
+
+
+
