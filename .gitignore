@@ -1,0 +1,9 @@
+target/
+build/
+.grandle/
+*.class/
+bin/
+.settings/
+.project
+.classpath
+config.properties
