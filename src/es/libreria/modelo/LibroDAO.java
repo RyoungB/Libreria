@@ -15,7 +15,7 @@ import es.libreria.config.Conexion;
     */
 public class LibroDAO {
     public boolean insertar(Libro libro) {
-        String sql = "INSERT INTO libros (isbn, titulo, fechapublicacion, precio,sinopsis, portadaURL, `encuadernacion`,numeroPaginas,idGenero,idEditorial) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO libros (isbn, titulo, fechapublicacion, precio,sinopsis, portadaURL, encuadernación,numeroPaginas,idGenero,idEditorial) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? , ?)";
      
         try (Connection conexion = Conexion.getConexion(); 
              PreparedStatement sentencia = conexion.prepareStatement(sql)) {
@@ -50,7 +50,7 @@ public class LibroDAO {
     // obtener un listado de todos los libros
     public List<Libro> obtenerListado() {
         List<Libro> lista = new ArrayList<>();
-        String sql = "SELECT idLibro, isbn, titulo, fechaPublicacion, precio, sinopsis, portadaURL, `encuadernación`, numeroPaginas, idGenero, idEditorial FROM libreria.LIBROS";
+        String sql = "SELECT idLibro, isbn, titulo, fechaPublicacion, precio, sinopsis, portadaURL, encuadernación, numeroPaginas, idGenero, idEditorial FROM libreria.LIBROS";
         
         try (Connection conexion = Conexion.getConexion(); 
              PreparedStatement sentencia = conexion.prepareStatement(sql); 
@@ -88,7 +88,7 @@ public class LibroDAO {
  // Modificar libros
     public boolean modificar(Libro libro) {
         // Buscamos al alumno por su ID y actualizamos sus otros campos
-    	String sql = "UPDATE libreria.LIBROS SET isbn = ?, titulo = ?, fechaPublicacion = ?, precio = ?, sinopsis = ?, portadaURL = ?, `encuadernación` = ?, numeroPaginas = ?, idGenero = ?, idEditorial = ? WHERE idLibro = ?";
+    	String sql = "UPDATE libreria.LIBROS SET isbn = ?, titulo = ?, fechaPublicacion = ?, precio = ?, sinopsis = ?, portadaURL = ?, encuadernación = ?, numeroPaginas = ?, idGenero = ?, idEditorial = ? WHERE idLibro = ?";
         
         try (Connection conexion = Conexion.getConexion(); 
              PreparedStatement sentencia = conexion.prepareStatement(sql)) {

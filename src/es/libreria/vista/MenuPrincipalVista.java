@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,13 +45,19 @@ public class MenuPrincipalVista extends JFrame {
         panelCentral.setBorder(BorderFactory.createEmptyBorder(20, 40, 40, 40));
 
         Font btnFont = new Font("Segoe UI", Font.BOLD, 14);
-
-        btnModuloLibros = new JButton("📚 Gestión de Libros");
+        
+        /**
+         * iconos y estilos de los botones
+         */
+        btnModuloLibros = new JButton(" Gestión de Libros");
         btnModuloLibros.setFont(btnFont);
         btnModuloLibros.putClientProperty("JButton.buttonType", "default"); // Estilo destacado de FlatLaf
-
-        btnModuloAutores = new JButton("✍️ Gestión de Autores");
+        btnModuloLibros.setIcon(new ImageIcon("C:/JavaCurso/Workspace/Libreria/imagenes/icono/book.png"));
+        
+        
+        btnModuloAutores = new JButton(" Gestión de Autores");
         btnModuloAutores.setFont(btnFont);
+        btnModuloAutores.setIcon(new ImageIcon("C:/JavaCurso/Workspace/Libreria/imagenes/icono/author.png"));
 
         panelCentral.add(btnModuloLibros);
         panelCentral.add(btnModuloAutores);

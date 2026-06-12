@@ -1,8 +1,10 @@
 package es.libreria.controlador;
 
-import javax.swing.JOptionPane;
 
+
+import es.libreria.modelo.AutorDAO;
 import es.libreria.modelo.LibroDAO;
+import es.libreria.vista.AutorVista;
 import es.libreria.vista.LibroVista;
 import es.libreria.vista.MenuPrincipalVista;
 
@@ -39,8 +41,17 @@ public class MenuPrincipalControlador {
             	AutoresControlador conAutores = new AutoresControlador(vistaAutor, daoAutor);
              	conAutores.iniciar();
              */
-           
-            JOptionPane.showMessageDialog(vistaMenu, "Módulo de autores en desarrollo (Falta crear su MVC).");
+            AutorVista vistaAutor = new AutorVista();
+            AutorDAO daoAutor = new AutorDAO();
+            AutoresControlador controladorAutores = new AutoresControlador(vistaAutor,daoAutor);
+            
+            controladorAutores.iniciar();
+            
+            /**
+             *  si dejamos el mensaje de abajo hace que se duplique el mensaje de entrada en el modulo de autores y 
+             *  no sale el mensaje de "Módulo de autores en desarrollo (Falta crear su MVC)"
+             */
+            //JOptionPane.showMessageDialog(vistaMenu, "Módulo de autores en desarrollo (Falta crear su MVC).");
         });
         
         

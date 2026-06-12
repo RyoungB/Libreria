@@ -8,10 +8,10 @@ public class Libro {
 	private double precio;
 	private String sinopsis;
 	private String portadaURL;
-	private int idGenero;
-	private int idEditorial;
 	private String encuadernacion;
 	private int numeroPaginas;
+	private int idEditorial;
+	private int idGenero;
 	
 	
 	
@@ -34,8 +34,8 @@ public class Libro {
 	 * @param idGenero
 	 * @param numeroPaginas
 	 */
-	public Libro(String isbn, String titulo, int fechapublicacion, double precio,String sinopsis,String portadaURL, String encuadernacion, int idEditorial,
-			int idGenero, int numeroPaginas) {
+	public Libro(String isbn, String titulo, int fechapublicacion, double precio,String sinopsis,String portadaURL, String encuadernacion, int numeroPaginas ,int idEditorial,
+			int idGenero) {
 		super();
 		
 		this.isbn = isbn;
@@ -44,10 +44,10 @@ public class Libro {
 		this.precio = precio;
 		this.sinopsis = sinopsis;
 		this.portadaURL = portadaURL;
-		this.idGenero = idGenero;
-		this.idEditorial = idEditorial;
 		this.encuadernacion = encuadernacion;
 		this.numeroPaginas = numeroPaginas;
+		this.idEditorial = idEditorial;
+		this.idGenero = idGenero;
 	}
 	
 	
@@ -66,8 +66,8 @@ public class Libro {
 	 * @param numeroPaginas
 	 */
 	
-	public Libro(int idLibro,String isbn, String titulo, int fechapublicacion, double precio,String sinopsis,String portadaURL, String encuadernacion, int idEditorial,
-			int idGenero, int numeroPaginas) {
+	public Libro(int idLibro,String isbn, String titulo, int fechapublicacion, double precio,String sinopsis,String portadaURL, String encuadernacion, int numeroPaginas, int idEditorial,
+			int idGenero) {
 		super();
 		this.idLibro = idLibro;
 		this.isbn = isbn;
@@ -76,10 +76,10 @@ public class Libro {
 		this.precio = precio;
 		this.sinopsis = sinopsis;
 		this.portadaURL = portadaURL;
-		this.idGenero = idGenero;
-		this.idEditorial = idEditorial;
 		this.encuadernacion = encuadernacion;
 		this.numeroPaginas = numeroPaginas;
+		this.idEditorial = idEditorial;
+		this.idGenero = idGenero;
 	}
 
 
@@ -198,10 +198,11 @@ public class Libro {
 	public String toString() {
 		return "Libro [idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", fechapublicacion="
 				+ fechapublicacion + ", precio=" + precio + ", sinopsis=" + sinopsis + ", portadaURL=" + portadaURL
-				+ ", idGenero=" + idGenero + ", idEditorial=" + idEditorial + ", encuadernacion=" + encuadernacion
-				+ ", numeroPaginas=" + numeroPaginas + "]";
+				+ ", encuadernacion=" + encuadernacion + ", numeroPaginas=" + numeroPaginas + ", idEditorial="
+				+ idEditorial + ", idGenero=" + idGenero + "]";
 	}
-	
+
+
 	
 
 }

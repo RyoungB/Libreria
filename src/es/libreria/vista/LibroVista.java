@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +30,8 @@ public class LibroVista extends JFrame {
 	/**
      *  Componentes del Formulario
      */
-    private JTextField txtId, txtIsbn, txtTitulo, txtFecha, txtPrecio, txtPortada, txtEncuadernacion, txtPaginas, txtGenero, txtEditorial;
+    private JTextField txtId, txtIsbn, txtTitulo, txtFecha, txtPrecio, txtPortada,  txtPaginas, txtGenero, txtEditorial;
+    private JComboBox<String> txtEncuadernacion;
     private JTextArea txtSinopsis;
     
     /**
@@ -81,7 +83,7 @@ public class LibroVista extends JFrame {
         txtFecha = new JTextField();
         txtPrecio = new JTextField();
         txtPortada = new JTextField();
-        txtEncuadernacion = new JTextField();
+        //txtEncuadernacion = new JTextField();
         txtPaginas = new JTextField();
         txtGenero = new JTextField();
         txtEditorial = new JTextField();
@@ -89,11 +91,21 @@ public class LibroVista extends JFrame {
         txtSinopsis.setLineWrap(true);
         txtSinopsis.setWrapStyleWord(true);
         JScrollPane scrollSinopsis = new JScrollPane(txtSinopsis);
+        
+        /**
+         * Añadimos encuadernacion en un JComboBox 
+         * debido a que asi evitaremos que el usuario comenta errores tipograficos
+         * a la hora de elegir el tipo de tapa (Blanda o Dura)
+         * 
+         */
+        
+         String[] opcionesEncuadernacion = {"Tapa Blanda", "Tapa dura"};
+         txtEncuadernacion = new JComboBox<String>(opcionesEncuadernacion);
 
         /**
          * Distribución ordenada en la rejilla (Label + Componente)
          */
-        panelFormulario.add(new JLabel("ID Libro (Auto):")); panelFormulario.add(txtId);
+        panelFormulario.add(new JLabel("ID Libro (Autor):")); panelFormulario.add(txtId);
         panelFormulario.add(new JLabel("ISBN:")); panelFormulario.add(txtIsbn);
         
         panelFormulario.add(new JLabel("Título:")); panelFormulario.add(txtTitulo);
@@ -163,6 +175,7 @@ public class LibroVista extends JFrame {
         int genero = txtGenero.getText().trim().isEmpty() ? 0 : Integer.parseInt(txtGenero.getText().trim());
         int editorial = txtEditorial.getText().trim().isEmpty() ? 0 : Integer.parseInt(txtEditorial.getText().trim());
 
+        String encuadernacionSeleccionada = txtEncuadernacion.getSelectedItem().toString();        
         Libro libro = new Libro(
             txtIsbn.getText().trim(),
             txtTitulo.getText().trim(),
@@ -170,7 +183,8 @@ public class LibroVista extends JFrame {
             precio,
             txtSinopsis.getText().trim(),
             txtPortada.getText().trim(),
-            txtEncuadernacion.getText().trim(),
+            //txtEncuadernacion.getText().trim(),
+            encuadernacionSeleccionada,
             paginas,
             genero,
             editorial
@@ -196,7 +210,8 @@ public class LibroVista extends JFrame {
         txtFecha.setText(String.valueOf(l.getFechapublicacion()));
         txtPrecio.setText(String.valueOf(l.getPrecio()));
         txtPortada.setText(l.getPortadaURL());
-        txtEncuadernacion.setText(l.getEncuadernacion());
+        //txtEncuadernacion.setText(l.getEncuadernacion());
+        txtEncuadernacion.setSelectedItem(l.getEncuadernacion());
         txtPaginas.setText(String.valueOf(l.getNumeroPaginas()));
         txtGenero.setText(String.valueOf(l.getIdGenero()));
         txtEditorial.setText(String.valueOf(l.getIdEditorial()));
@@ -206,7 +221,9 @@ public class LibroVista extends JFrame {
     public void limpiarCampos() {
         txtId.setText(""); txtIsbn.setText(""); txtTitulo.setText("");
         txtFecha.setText(""); txtPrecio.setText(""); txtPortada.setText("");
-        txtEncuadernacion.setText(""); txtPaginas.setText("");
+        //txtEncuadernacion.setText("");
+        txtEncuadernacion.setSelectedIndex(0);
+        txtPaginas.setText("");
         txtGenero.setText(""); txtEditorial.setText(""); txtSinopsis.setText("");
     }
 
